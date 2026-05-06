@@ -288,9 +288,365 @@ body{ font-family:'DM Mono',monospace; }
   to  { transform:translateY(0); }
 }
 
+
+/* === 浮誇升級 === */
+body{
+  background: linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 25%, #4a2d7a 50%, #2d1b4e 75%, #1a0a2e 100%);
+  background-size: 400% 400%;
+  animation: bgShift 20s ease infinite;
+  min-height:100vh;
+}
+@keyframes bgShift{
+  0%,100%{ background-position:0% 50%; }
+  50%   { background-position:100% 50%; }
+}
+
+/* App 容器加金邊光暈 */
+.app{
+  border-radius:24px;
+  box-shadow: 
+    0 0 0 1px rgba(196,181,232,0.3),
+    0 0 40px rgba(124,58,237,0.4),
+    0 0 80px rgba(124,58,237,0.2),
+    0 20px 60px rgba(0,0,0,0.5);
+  overflow:hidden;
+  position:relative;
+}
+.app::before{
+  content:'';
+  position:absolute; inset:-2px;
+  background: linear-gradient(45deg, #c4b5e8, #7c3aed, #c4b5e8, #ffd700, #c4b5e8);
+  background-size: 400% 400%;
+  border-radius:26px;
+  z-index:-1;
+  animation: borderFlow 4s linear infinite;
+  opacity:0.6;
+}
+@keyframes borderFlow{
+  0%,100%{ background-position:0% 50%; }
+  50%   { background-position:100% 50%; }
+}
+
+/* Splash 升級 */
+.splash{
+  background: radial-gradient(circle at 50% 50%, #4a2d7a 0%, #2d1b4e 50%, #0a0218 100%);
+}
+.splash::before{
+  content:'';
+  position:absolute; inset:0;
+  background-image:
+    radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 60% 70%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(2px 2px at 80% 20%, rgba(255,215,0,0.7), transparent),
+    radial-gradient(1px 1px at 30% 80%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(2px 2px at 90% 60%, rgba(196,181,232,0.8), transparent),
+    radial-gradient(1px 1px at 10% 50%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(2px 2px at 70% 90%, rgba(255,215,0,0.5), transparent);
+  background-size: 100% 100%;
+  animation: starTwinkle 4s ease-in-out infinite;
+}
+@keyframes starTwinkle{
+  0%,100%{ opacity:0.4; }
+  50%   { opacity:1; }
+}
+.splash-logo{
+  font-size:44px;
+  background: linear-gradient(135deg, #fff 0%, #c4b5e8 50%, #ffd700 100%);
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow: 0 0 30px rgba(196,181,232,0.6);
+  filter: drop-shadow(0 0 20px rgba(255,215,0,0.4));
+  position:relative; z-index:1;
+}
+.splash-sub{
+  color:rgba(255,215,0,0.8) !important;
+  letter-spacing:0.5em !important;
+  font-weight:500;
+  position:relative; z-index:1;
+}
+.splash-dots span{
+  background: linear-gradient(135deg, #ffd700, #c4b5e8) !important;
+  box-shadow: 0 0 10px rgba(255,215,0,0.8);
+}
+
+/* 標題列加金光 */
+.topbar-title{
+  background: linear-gradient(135deg, #fff 0%, #ffd700 50%, #fff 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent;
+  font-size:20px !important;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  filter: drop-shadow(0 0 8px rgba(255,215,0,0.5));
+  animation: shimmer 3s linear infinite;
+}
+@keyframes shimmer{
+  0%,100%{ background-position:0% 50%; }
+  50%   { background-position:100% 50%; }
+}
+.topbar-sub{
+  color:rgba(255,215,0,0.85) !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+
+/* 左側導航發光 */
+.nav-item.active{
+  background: linear-gradient(90deg, rgba(124,58,237,0.15) 0%, rgba(255,215,0,0.05) 100%) !important;
+  border-left: 3px solid transparent !important;
+  border-image: linear-gradient(180deg, #ffd700, #7c3aed, #ffd700) 1;
+  position:relative;
+}
+.nav-item.active::after{
+  content:'';
+  position:absolute; left:0; top:0; bottom:0; width:3px;
+  background: linear-gradient(180deg, #ffd700, #7c3aed, #ffd700);
+  background-size:100% 200%;
+  animation: navGlow 2s ease infinite;
+  box-shadow: 0 0 8px rgba(255,215,0,0.6);
+}
+@keyframes navGlow{
+  0%,100%{ background-position:0% 0%; }
+  50%   { background-position:0% 100%; }
+}
+
+/* 子分類 tabs 升級 */
+.subtab.active{
+  color: var(--accent) !important;
+  font-weight:600 !important;
+  border-bottom: 2px solid transparent !important;
+  position:relative;
+}
+.subtab.active::after{
+  content:'';
+  position:absolute; left:0; right:0; bottom:-1px; height:2px;
+  background: linear-gradient(90deg, #ffd700, #7c3aed, #ffd700);
+  background-size:200% 100%;
+  animation: tabSlide 2s linear infinite;
+  box-shadow: 0 0 6px rgba(255,215,0,0.7);
+}
+@keyframes tabSlide{
+  0%  { background-position:0% 0%; }
+  100%{ background-position:200% 0%; }
+}
+
+/* 品項卡片豪華邊框 */
+.item-card{
+  position:relative;
+  padding:14px 12px !important;
+  border-bottom:none !important;
+  border-radius:14px;
+  margin:8px 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(196,181,232,0.1) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(196,181,232,0.3);
+  transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+}
+.item-card:hover{
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 
+    0 8px 24px rgba(124,58,237,0.25),
+    0 0 0 1px rgba(255,215,0,0.4);
+  background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(196,181,232,0.2) 100%);
+}
+.item-card::before{
+  content:'';
+  position:absolute; inset:0;
+  border-radius:14px;
+  padding:1px;
+  background: linear-gradient(135deg, transparent, rgba(255,215,0,0.5), transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity:0; transition: opacity 0.3s;
+  pointer-events:none;
+}
+.item-card:hover::before{ opacity:1; }
+
+/* 品項圖片發光 */
+.item-img{
+  border-radius:14px !important;
+  box-shadow: 
+    0 4px 12px rgba(124,58,237,0.3),
+    0 0 0 2px rgba(255,255,255,0.8),
+    0 0 0 3px rgba(196,181,232,0.4);
+  transition: all 0.3s;
+}
+.item-card:hover .item-img{
+  transform: rotate(-3deg) scale(1.08);
+  box-shadow: 
+    0 8px 20px rgba(124,58,237,0.5),
+    0 0 0 2px #fff,
+    0 0 0 4px rgba(255,215,0,0.6);
+}
+
+/* 加號按鈕浮誇升級 */
+.add-btn{
+  background: linear-gradient(135deg, #fff 0%, #f3f0ff 100%) !important;
+  border: 1.5px solid rgba(124,58,237,0.4) !important;
+  box-shadow: 
+    0 2px 6px rgba(124,58,237,0.2),
+    inset 0 1px 0 rgba(255,255,255,0.8);
+  font-weight:600 !important;
+}
+.add-btn.on{
+  background: linear-gradient(135deg, #7c3aed 0%, #2d1b4e 50%, #ffd700 200%) !important;
+  border-color: #ffd700 !important;
+  box-shadow: 
+    0 0 0 2px rgba(255,215,0,0.4),
+    0 4px 12px rgba(124,58,237,0.6),
+    inset 0 1px 0 rgba(255,255,255,0.3) !important;
+  color:#fff !important;
+}
+
+/* 圓點豪華 */
+.dot.on{
+  background: linear-gradient(135deg, #ffd700, #7c3aed) !important;
+  box-shadow: 0 0 4px rgba(255,215,0,0.8);
+}
+
+/* 購物車列升級 */
+.cart-bar{
+  background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(243,240,255,0.95) 100%) !important;
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255,215,0,0.4) !important;
+  box-shadow: 0 -4px 20px rgba(124,58,237,0.15);
+}
+.cart-icon-wrap{
+  background: linear-gradient(135deg, #fff 0%, #f3f0ff 100%) !important;
+  border: 1.5px solid rgba(124,58,237,0.3) !important;
+  box-shadow: 0 2px 8px rgba(124,58,237,0.15);
+  transition: all 0.3s;
+}
+.cart-icon-wrap:hover{
+  transform: scale(1.08) rotate(-5deg);
+  box-shadow: 0 4px 16px rgba(124,58,237,0.4);
+  border-color: #ffd700 !important;
+}
+.cart-badge{
+  background: linear-gradient(135deg, #ff4081 0%, #ffd700 100%) !important;
+  box-shadow: 0 0 0 2px #fff, 0 0 12px rgba(255,64,129,0.6);
+  font-weight:700 !important;
+}
+
+/* 查看訂單按鈕 */
+.view-btn{
+  background: linear-gradient(135deg, #2d1b4e 0%, #7c3aed 50%, #2d1b4e 100%) !important;
+  background-size: 200% 200% !important;
+  border: 1px solid rgba(255,215,0,0.5) !important;
+  font-weight:600 !important;
+  letter-spacing:0.1em !important;
+  position:relative;
+  overflow:hidden;
+}
+.view-btn:not(:disabled){
+  animation: btnGlow 2s ease-in-out infinite, btnShine 4s linear infinite;
+  box-shadow: 
+    0 4px 16px rgba(124,58,237,0.5),
+    0 0 0 1px rgba(255,215,0,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.2);
+}
+@keyframes btnShine{
+  0%,100%{ background-position:0% 50%; }
+  50%   { background-position:100% 50%; }
+}
+.view-btn:not(:disabled)::after{
+  content:'';
+  position:absolute; top:0; left:-100%;
+  width:50%; height:100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: btnSweep 3s ease-in-out infinite;
+}
+@keyframes btnSweep{
+  0%  { left:-100%; }
+  100%{ left:200%; }
+}
+
+/* 角落裝飾大升級 */
+.corner-deco{
+  font-size:20px !important;
+  opacity:0.4 !important;
+  filter: drop-shadow(0 0 6px rgba(255,215,0,0.6));
+  z-index:100;
+}
+
+/* Modal 升級 */
+.modal{
+  background: linear-gradient(135deg, #fff 0%, #f3f0ff 100%) !important;
+  border-top: 2px solid transparent;
+  border-image: linear-gradient(90deg, #ffd700, #7c3aed, #ffd700) 1;
+  box-shadow: 0 -10px 40px rgba(124,58,237,0.4);
+}
+.modal-title{
+  background: linear-gradient(135deg, #2d1b4e 0%, #7c3aed 100%);
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent;
+  font-size:19px !important;
+}
+.modal-handle{
+  background: linear-gradient(90deg, #ffd700, #7c3aed) !important;
+  width:48px !important;
+  box-shadow: 0 0 8px rgba(255,215,0,0.5);
+}
+
+/* 送出按鈕 */
+.submit-btn{
+  background: linear-gradient(135deg, #2d1b4e 0%, #7c3aed 50%, #ffd700 200%) !important;
+  background-size: 200% 200% !important;
+  font-weight:700 !important;
+  letter-spacing:0.1em !important;
+  border: 1px solid rgba(255,215,0,0.5) !important;
+  box-shadow: 
+    0 4px 16px rgba(124,58,237,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.2);
+  animation: btnShine 3s linear infinite;
+}
+
+/* Toast 升級 */
+.toast{
+  background: linear-gradient(135deg, #2d1b4e 0%, #7c3aed 100%) !important;
+  border: 1px solid rgba(255,215,0,0.5);
+  box-shadow: 0 8px 24px rgba(124,58,237,0.5);
+  font-weight:500 !important;
+}
+
+/* Spinner 升級 */
+.spinner{
+  border-top-color: #ffd700 !important;
+  border-right-color: #7c3aed !important;
+  box-shadow: 0 0 16px rgba(255,215,0,0.5);
+}
+
+/* 漂浮粒子 */
+.floating-particles{
+  position:fixed; inset:0; pointer-events:none; z-index:1;
+  overflow:hidden;
+}
+.particle{
+  position:absolute;
+  font-size:14px;
+  opacity:0;
+  animation: floatUp linear infinite;
+}
+@keyframes floatUp{
+  0%   { transform:translateY(110vh) rotate(0deg); opacity:0; }
+  10%  { opacity:0.5; }
+  90%  { opacity:0.5; }
+  100% { transform:translateY(-10vh) rotate(360deg); opacity:0; }
+}
+
 </style>
 </head>
 <body>
+<div class="floating-particles">
+  <span class="particle" style="left:5%; animation-duration:18s; animation-delay:0s;">✨</span>
+  <span class="particle" style="left:15%; animation-duration:22s; animation-delay:3s;">⭐</span>
+  <span class="particle" style="left:25%; animation-duration:16s; animation-delay:7s;">♡</span>
+  <span class="particle" style="left:35%; animation-duration:20s; animation-delay:1s;">✦</span>
+  <span class="particle" style="left:50%; animation-duration:24s; animation-delay:5s;">✨</span>
+  <span class="particle" style="left:65%; animation-duration:19s; animation-delay:9s;">⭐</span>
+  <span class="particle" style="left:75%; animation-duration:21s; animation-delay:2s;">♡</span>
+  <span class="particle" style="left:85%; animation-duration:17s; animation-delay:6s;">✦</span>
+  <span class="particle" style="left:95%; animation-duration:23s; animation-delay:10s;">✨</span>
+</div>
 <div class="splash" id="splash">
   <div class="splash-logo">許裴恩</div>
   <div class="splash-sub">MENU SYSTEM</div>
