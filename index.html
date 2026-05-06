@@ -293,7 +293,7 @@ body{ font-family:'DM Mono',monospace; }
 body{
   background: linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 25%, #4a2d7a 50%, #2d1b4e 75%, #1a0a2e 100%);
   background-size: 400% 400%;
-  animation: bgShift 40s ease infinite;
+  animation: bgShift 20s ease infinite;
   min-height:100vh;
 }
 @keyframes bgShift{
@@ -305,21 +305,21 @@ body{
 .app{
   border-radius:24px;
   box-shadow: 
-    0 0 0 1px rgba(196,181,232,0.5),
-    0 0 40px rgba(45,27,78,0.8),
-    0 0 80px rgba(45,27,78,0.5),
-    0 20px 60px rgba(0,0,0,0.7);
+    0 0 0 1px rgba(196,181,232,0.3),
+    0 0 40px rgba(124,58,237,0.4),
+    0 0 80px rgba(124,58,237,0.2),
+    0 20px 60px rgba(0,0,0,0.5);
   overflow:hidden;
   position:relative;
 }
 .app::before{
   content:'';
   position:absolute; inset:-2px;
-  background: linear-gradient(45deg, #e8e0f8, #7c3aed, #2d1b4e, #9b7fd4, #e8e0f8);
+  background: linear-gradient(45deg, #c4b5e8, #7c3aed, #c4b5e8, #ffd700, #c4b5e8);
   background-size: 400% 400%;
   border-radius:26px;
   z-index:-1;
-  animation: borderFlow 10s linear infinite;
+  animation: borderFlow 4s linear infinite;
   opacity:0.6;
 }
 @keyframes borderFlow{
@@ -351,31 +351,33 @@ body{
 }
 .splash-logo{
   font-size:44px;
-  background: linear-gradient(135deg, #ffffff 0%, #c4b5e8 50%, #2d1b4e 100%);
+  background: linear-gradient(135deg, #fff 0%, #c4b5e8 50%, #ffd700 100%);
   -webkit-background-clip:text; background-clip:text;
   -webkit-text-fill-color:transparent;
+  text-shadow: 0 0 30px rgba(196,181,232,0.6);
+  filter: drop-shadow(0 0 20px rgba(255,215,0,0.4));
   position:relative; z-index:1;
 }
 .splash-sub{
-  color:rgba(196,181,232,0.9) !important;
+  color:rgba(255,215,0,0.8) !important;
   letter-spacing:0.5em !important;
   font-weight:500;
   position:relative; z-index:1;
 }
 .splash-dots span{
-  background: linear-gradient(135deg, #c4b5e8, #7c3aed) !important;
-  box-shadow: 0 0 10px rgba(196,181,232,0.8);
+  background: linear-gradient(135deg, #ffd700, #c4b5e8) !important;
+  box-shadow: 0 0 10px rgba(255,215,0,0.8);
 }
 
 /* 標題列加金光 */
 .topbar-title{
-  background: linear-gradient(135deg, #fff 0%, #c4b5e8 50%, #fff 100%);
+  background: linear-gradient(135deg, #fff 0%, #ffd700 50%, #fff 100%);
   background-size: 200% 200%;
   -webkit-background-clip:text; background-clip:text;
   -webkit-text-fill-color:transparent;
   font-size:20px !important;
   text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-  filter: drop-shadow(0 0 8px rgba(196,181,232,0.5));
+  filter: drop-shadow(0 0 8px rgba(255,215,0,0.5));
   animation: shimmer 3s linear infinite;
 }
 @keyframes shimmer{
@@ -383,7 +385,7 @@ body{
   50%   { background-position:100% 50%; }
 }
 .topbar-sub{
-  color:rgba(196,181,232,0.9) !important;
+  color:rgba(255,215,0,0.85) !important;
   text-shadow: 0 1px 4px rgba(0,0,0,0.6);
 }
 
@@ -391,16 +393,16 @@ body{
 .nav-item.active{
   background: linear-gradient(90deg, rgba(124,58,237,0.15) 0%, rgba(255,215,0,0.05) 100%) !important;
   border-left: 3px solid transparent !important;
-  border-image: linear-gradient(180deg, #c4b5e8, #7c3aed, #2d1b4e) 1;
+  border-image: linear-gradient(180deg, #ffd700, #7c3aed, #ffd700) 1;
   position:relative;
 }
 .nav-item.active::after{
   content:'';
   position:absolute; left:0; top:0; bottom:0; width:3px;
-  background: linear-gradient(180deg, #c4b5e8, #7c3aed, #2d1b4e);
+  background: linear-gradient(180deg, #ffd700, #7c3aed, #ffd700);
   background-size:100% 200%;
   animation: navGlow 2s ease infinite;
-  box-shadow: 0 0 8px rgba(196,181,232,0.6);
+  box-shadow: 0 0 8px rgba(255,215,0,0.6);
 }
 @keyframes navGlow{
   0%,100%{ background-position:0% 0%; }
@@ -417,10 +419,10 @@ body{
 .subtab.active::after{
   content:'';
   position:absolute; left:0; right:0; bottom:-1px; height:2px;
-  background: linear-gradient(90deg, #c4b5e8, #7c3aed, #2d1b4e);
+  background: linear-gradient(90deg, #ffd700, #7c3aed, #ffd700);
   background-size:200% 100%;
   animation: tabSlide 2s linear infinite;
-  box-shadow: 0 0 6px rgba(196,181,232,0.7);
+  box-shadow: 0 0 6px rgba(255,215,0,0.7);
 }
 @keyframes tabSlide{
   0%  { background-position:0% 0%; }
@@ -443,7 +445,7 @@ body{
   transform: translateY(-2px) scale(1.01);
   box-shadow: 
     0 8px 24px rgba(124,58,237,0.25),
-    0 0 0 1px rgba(196,181,232,0.6);
+    0 0 0 1px rgba(255,215,0,0.4);
   background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(196,181,232,0.2) 100%);
 }
 .item-card::before{
@@ -451,7 +453,7 @@ body{
   position:absolute; inset:0;
   border-radius:14px;
   padding:1px;
-  background: linear-gradient(135deg, transparent, rgba(196,181,232,0.5), transparent);
+  background: linear-gradient(135deg, transparent, rgba(255,215,0,0.5), transparent);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor; mask-composite: exclude;
   opacity:0; transition: opacity 0.3s;
@@ -473,7 +475,7 @@ body{
   box-shadow: 
     0 8px 20px rgba(124,58,237,0.5),
     0 0 0 2px #fff,
-    0 0 0 4px rgba(196,181,232,0.6);
+    0 0 0 4px rgba(255,215,0,0.6);
 }
 
 /* 加號按鈕浮誇升級 */
@@ -486,19 +488,19 @@ body{
   font-weight:600 !important;
 }
 .add-btn.on{
-  background: linear-gradient(135deg, #9b7fd4 0%, #2d1b4e 100%) !important;
-  border-color: #c4b5e8 !important;
+  background: linear-gradient(135deg, #7c3aed 0%, #2d1b4e 50%, #ffd700 200%) !important;
+  border-color: #ffd700 !important;
   box-shadow: 
-    0 0 0 2px rgba(196,181,232,0.5),
-    0 4px 12px rgba(45,27,78,0.6),
+    0 0 0 2px rgba(255,215,0,0.4),
+    0 4px 12px rgba(124,58,237,0.6),
     inset 0 1px 0 rgba(255,255,255,0.3) !important;
   color:#fff !important;
 }
 
 /* 圓點豪華 */
 .dot.on{
-  background: linear-gradient(135deg, #c4b5e8, #2d1b4e) !important;
-  box-shadow: 0 0 4px rgba(196,181,232,0.8);
+  background: linear-gradient(135deg, #ffd700, #7c3aed) !important;
+  box-shadow: 0 0 4px rgba(255,215,0,0.8);
 }
 
 /* 購物車列升級 */
@@ -517,19 +519,19 @@ body{
 .cart-icon-wrap:hover{
   transform: scale(1.08) rotate(-5deg);
   box-shadow: 0 4px 16px rgba(124,58,237,0.4);
-  border-color: #c4b5e8 !important;
+  border-color: #ffd700 !important;
 }
 .cart-badge{
-  background: linear-gradient(135deg, #7c3aed 0%, #c4b5e8 100%) !important;
-  box-shadow: 0 0 0 2px #fff, 0 0 12px rgba(124,58,237,0.6);
+  background: linear-gradient(135deg, #ff4081 0%, #ffd700 100%) !important;
+  box-shadow: 0 0 0 2px #fff, 0 0 12px rgba(255,64,129,0.6);
   font-weight:700 !important;
 }
 
 /* 查看訂單按鈕 */
 .view-btn{
-  background: linear-gradient(135deg, #2d1b4e 0%, #7c3aed 50%, #9b7fd4 100%) !important;
+  background: linear-gradient(135deg, #2d1b4e 0%, #7c3aed 50%, #2d1b4e 100%) !important;
   background-size: 200% 200% !important;
-  border: 1px solid rgba(196,181,232,0.5) !important;
+  border: 1px solid rgba(255,215,0,0.5) !important;
   font-weight:600 !important;
   letter-spacing:0.1em !important;
   position:relative;
@@ -538,8 +540,8 @@ body{
 .view-btn:not(:disabled){
   animation: btnGlow 2s ease-in-out infinite, btnShine 4s linear infinite;
   box-shadow: 
-    0 4px 16px rgba(45,27,78,0.6),
-    0 0 0 1px rgba(196,181,232,0.4),
+    0 4px 16px rgba(124,58,237,0.5),
+    0 0 0 1px rgba(255,215,0,0.3),
     inset 0 1px 0 rgba(255,255,255,0.2);
 }
 @keyframes btnShine{
@@ -562,7 +564,7 @@ body{
 .corner-deco{
   font-size:20px !important;
   opacity:0.4 !important;
-  filter: drop-shadow(0 0 6px rgba(196,181,232,0.6));
+  filter: drop-shadow(0 0 6px rgba(255,215,0,0.6));
   z-index:100;
 }
 
@@ -570,7 +572,7 @@ body{
 .modal{
   background: linear-gradient(135deg, #fff 0%, #f3f0ff 100%) !important;
   border-top: 2px solid transparent;
-  border-image: linear-gradient(90deg, #c4b5e8, #7c3aed, #2d1b4e) 1;
+  border-image: linear-gradient(90deg, #ffd700, #7c3aed, #ffd700) 1;
   box-shadow: 0 -10px 40px rgba(124,58,237,0.4);
 }
 .modal-title{
@@ -580,20 +582,20 @@ body{
   font-size:19px !important;
 }
 .modal-handle{
-  background: linear-gradient(90deg, #c4b5e8, #7c3aed) !important;
+  background: linear-gradient(90deg, #ffd700, #7c3aed) !important;
   width:48px !important;
-  box-shadow: 0 0 8px rgba(196,181,232,0.5);
+  box-shadow: 0 0 8px rgba(255,215,0,0.5);
 }
 
 /* 送出按鈕 */
 .submit-btn{
-  background: linear-gradient(135deg, #2d1b4e 0%, #7c3aed 50%, #9b7fd4 100%) !important;
+  background: linear-gradient(135deg, #2d1b4e 0%, #7c3aed 50%, #ffd700 200%) !important;
   background-size: 200% 200% !important;
   font-weight:700 !important;
   letter-spacing:0.1em !important;
-  border: 1px solid rgba(196,181,232,0.5) !important;
+  border: 1px solid rgba(255,215,0,0.5) !important;
   box-shadow: 
-    0 4px 16px rgba(45,27,78,0.5),
+    0 4px 16px rgba(124,58,237,0.4),
     inset 0 1px 0 rgba(255,255,255,0.2);
   animation: btnShine 3s linear infinite;
 }
